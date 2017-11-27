@@ -46,14 +46,15 @@ body {
 }
 
 .loading_mask {
-    background-image: url(/images/loading/an.svg);
+    background-image: url('/images/loading/an.svg');
     position: absolute;
-    width: 180px;
-    height: 150px;
+    margin:-1px;
+    width: 182px;
+    height: 152px;
     z-index: 100
 }
 
-.loading_mask:after {
+.loading_mask:before {
 	content:'';
 	position: absolute;
 	top:50px;
