@@ -40,7 +40,7 @@ body {
 }
 
 #loading {
-	background-color: #4bbbbb;
+	background-color: #FFC107;
     width: 180px;
     height: 150px;
 }
@@ -64,11 +64,11 @@ body {
 }
 
 .loading_wave {
-    background-color: #4bbbbb;
+    background-color: #FFC107;
     position: relative;
-    width: 60px;
-    height: 27px;
-    top: -12px;
+    width: 62px;
+    height: 25px;
+    top: -8px;
     border-radius: 50%;
         -webkit-border-radius: 50%;
         -o-border-radius: 50%;
