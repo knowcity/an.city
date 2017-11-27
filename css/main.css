@@ -46,20 +46,11 @@ body {
 }
 
 .loading_mask {
-    background-image: url('/images/loading/an.svg');
     position: absolute;
     margin:-1px;
     width: 182px;
     height: 152px;
     z-index: 100
-}
-
-.loading_mask:before {
-	content:'';
-	position: absolute;
-	top:50px;
-	border-right: 170px solid transparent;
-	border-bottom: 80px solid rgba(34,34,34,0.3);
 }
 
 .loading_empty {
