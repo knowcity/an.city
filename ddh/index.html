@@ -1,22 +1,31 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta name="theme-color" content="#000000">
-		<meta name="msapplication-navbutton-color" content="#000000">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=750, user-scalable=no">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#000000">
+        <meta name="msapplication-navbutton-color" content="#000000">
+        <title>DDH Testing</title>
 
-		<title>ANalyzing City</title>
-		<link rel="stylesheet" type="text/css" href="./statics/proj_ddh.css">
-	</head>
-	<body>
-		<div id="intro-container">
-	        <div id="loading">
-	        	<div class="loading_main"></div>
-	        </div>
-        	<div id="percent">...Coming Soon...</div>
-            <div id="tips">Contact: hi@an.city</div>
-		</div>
-	</body>
+        <link rel="stylesheet" type="text/css" href="./assets/proj_ddh.css">
+    </head>
+    <body>
+        <div class="homepage desktop">
+            <img src="./assets/loading/desktop.png">
+        </div>
+
+        <div id="intro-container" class="nodesktop">
+            <div id="loading">
+                <div class="loading_main"></div>
+            </div>
+            <div id="percent">0%</div>
+            <div id="tips">请竖向锁屏观看</div>
+        </div>
+
+        <script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
+        <noscript>
+            <p>网页需要运行脚本才能正常运行，请允许脚本运行。</p>
+        </noscript>
+    </body>
 </html>
