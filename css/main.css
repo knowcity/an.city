@@ -16,6 +16,30 @@ body {
     background: #000
 }
 
+.peoples {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.people {
+    width: 80px;
+}
+
+.people img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.people p {
+    color:#ddd;
+    margin-top: 15px;
+}
+
 #intro-container {
 	position: absolute; /*needed for vertical centering*/
 	height:100%;
@@ -32,10 +56,10 @@ body {
 	align-content: center
 }
 
-#percent, #tips {
+#intro-container>p {
 	margin:6px;
     color: #ddd;
-    font-size: 16px;
+    font-size: 1em;
     text-align: center
 }
 
