@@ -41,9 +41,8 @@ body {
 }
 
 #intro-container {
-	position: absolute; /*needed for vertical centering*/
-	height:100%;
-	width: 100%;
+	height:100vh;
+	width: 100vw;
 	background-color: #000;
 	display: -webkit-flex;
 	display: flex;
@@ -64,9 +63,11 @@ body {
 }
 
 #loading {
+    position: relative;
 	background-color: #FFC107;
     width: 180px;
     height: 150px;
+    min-height: 150px;
 }
 
 .loading_mask {
