@@ -7,22 +7,16 @@
     }
 
 // for lock orientation
-	var width = window.innerWidth, height = window.innerHeight;
-
 	function moveLoader(n) { document.getElementById('intro-container').style.top=n.toString()+"px" }
-
 	function lockOrientation() {
-		if (width >= height) {
-			setTimeout(function(){ moveLoader(80);}, 300);
+		if (window.innerWidth >= window.innerHeight) {
+			moveLoader(80);
 		} else {
-			setTimeout(function(){ moveLoader(488);}, 300);
+			moveLoader(488);
 		}
 	}
-
 	lockOrientation();
-	setTimeout(function(){ document.getElementById('intro-container').style.display = 'block';}, 300);
-
-	window.onorientationchange = lockOrientation;
+	window.addEventListener("resize", lockOrientation);
 
 
 // renderer.backgroundColor = 0x3498db;
