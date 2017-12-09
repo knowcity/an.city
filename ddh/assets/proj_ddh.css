@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: rgb(238,238,238);
+    background-color: #000;
 }
 
 .hidden {
@@ -21,70 +21,23 @@ body {
 }
 
 canvas {
-    background-color: #45b4bd;
     position: absolute;
-}
-
-.homepage {
-    z-index: 100;
-    text-align: center;
-    display: none;
-}
-
-.homepage img{
-    margin-top:100px;
-    max-height: 678px;
-    max-width: 646px;
-}
-
-.desktop .desktop {
-    display: block;
-    background-color: rgb(238,238,238);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-
-.desktop .nodesktop {
-    display: none;
 }
 
 #intro-container {
-	position: absolute; /*needed for vertical centering*/
-	height:100%;
-	width: 100%;
-	background-color: #000;
-	display: -webkit-flex;
-	display: flex;
-	-webkit-flex-direction: column;
-	flex-direction: column;
-	-webkit-justify-content: center;
-	justify-content: center;
-	-webkit-align-items: center;
-	align-items: center;
-	align-content: center
-}
-
-#percent, #tips {
-	margin:6px;
-    color: #ddd;
-    font-size: 16px;
-    text-align: center
+    position: absolute;
+    display: none;
+	width: 100vw;
 }
 
 #loading {
-    width: 200px;
-    height: 200px;
-    z-index: 90;
-    -webkit-transform-origin: 0 0
-}
-
-#loading .loading_main {
-    background-image: url(./loading/loading_ani_ph.png);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
     width: 150px;
     height: 150px;
-    margin-top: 25px;
-    margin-left: 25px;
+    z-index: 90;
+    background-image: url(./loading/loading_ani_ph.png);
     -webkit-animation: loading .75s steps(1) infinite;
     -moz-animation: loading .75s steps(1) infinite;
     -o-animation: loading .75s steps(1) infinite;
@@ -94,7 +47,7 @@ canvas {
 #percent, #tips {
     margin:6px;
     color: #aaa;
-    font-size: 16px;
+    font-size: 1em;
     text-align: center
 }
 
