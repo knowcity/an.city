@@ -1,4 +1,4 @@
-!function app() {
+!function gamerun() {
 // determine device
     if (!/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|mobile/i.test(navigator.userAgent.toLowerCase())) {
     	c = document.getElementById('content');
@@ -10,12 +10,11 @@
 // for lock orientation
 	// window.addEventListener("resize", lockOrientation);
 
-
-// renderer.backgroundColor = 0x3498db;
-
-
-// document.getElementById('content').appendChild(renderer.view);
-// document.getElementById('intro-container').style.display = 'none';
+var app = new PIXI.Application({});
+app.renderer.resize(window.innerWidth, window.innerHeight);
+app.renderer.backgroundColor = 0x3498db;
+document.getElementById('content').appendChild(app.view);
+document.getElementById('intro-container').style.display = 'none';
 
 
 // // Create the main stage for your display objects
