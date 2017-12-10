@@ -46,7 +46,7 @@ canvas {
     width: 150px;
     height: 150px;
     z-index: 90;
-    background-image: url(./loading/loading_ani_ph.png);
+    background-image: url(./images/loading/loading_ani_ph.png);
     -webkit-animation: loading .75s steps(1) infinite;
     -moz-animation: loading .75s steps(1) infinite;
     -o-animation: loading .75s steps(1) infinite;
