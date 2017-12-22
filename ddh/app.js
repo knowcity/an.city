@@ -62,12 +62,21 @@ function scrollCbk(left, top, zoom) {
 function tStart(e) {
 	var a = e.data.originalEvent;
     touchOn = !0;
-    scrollObj.doTouchStart([a], a.timeStamp);
+    if (a.touches) {
+    	scrollObj.doTouchStart(a.touches, a.timeStamp);
+    } else {
+    	scrollObj.doTouchStart([a], a.timeStamp);
+    }
+// add a helper to show the XY coord
 }
 function tMove(e) {
 	if (touchOn) {
 		var a = e.data.originalEvent;
-        scrollObj.doTouchMove([a], a.timeStamp)
+	    if (a.touches) {
+	    	scrollObj.doTouchMove(a.touches, a.timeStamp);
+	    } else {
+	    	scrollObj.doTouchMove([a], a.timeStamp);
+	    }
     }
 }
 function tEnd(e) {
@@ -128,6 +137,4 @@ initPIXI();
 
 // ========== WRAP UP ==========
 window.addEventListener('resize', fitScreen, true);
-// TODO need to write a helper function to show the XY coord of doTouchStart
-
 }();
