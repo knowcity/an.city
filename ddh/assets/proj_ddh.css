@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #eee;
+    background-color: #000;
 }
 
 .hidden {
@@ -25,7 +25,6 @@ canvas {
 }
 
 #content {
-    background-color: #000;
     width: 100%;
     height:100%;
 }
