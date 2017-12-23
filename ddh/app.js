@@ -139,24 +139,12 @@ initPIXI();
 
 // ========== WRAP UP ==========
 window.addEventListener('resize', fitScreen, true);
-// SHARE
+// SHARE not working
 var shareData = {};
 shareData['title']=document.getElementById('sharewxtitle').innerHTML;
 shareData['desc']=document.getElementById('sharewxtext').innerHTML;
 shareData['img_url']=document.getElementById('sharewxphotourl').innerHTML;
 shareData['link']=document.getElementById('sharewxurl').innerHTML;
-
-// wexin
-document.addEventListener('WeixinJSBridgeReady', function () {
-    window.WeixinJSBridge.on('menu:share:appmessage', function(argv) {
-            return window.WeixinJSBridge.invoke('sendAppMessage', shareData, function(res) {});
-    }, false);
-    window.WeixinJSBridge.on('menu:share:timeline', function(argv) {
-            return window.WeixinJSBridge.invoke('shareTimeline', shareData, function(res) {});
-    }, false);
-}, false);
-
-// link:http://an.city/ddh/assets/images/shareImg.png
 
 // ANALYSIS
 
