@@ -120,6 +120,9 @@ if (!/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|le
 	c.innerHTML = '';
 	return void c.setAttribute("style", "height: 100vh; width: 100vw; background: #eee url(./assets/images/loading/desktop.png) no-repeat center 100px; background-size: 639px 396px;");
 }
+// load music before PIXI
+// TODO by default muted
+
 // declare globals
 var touchOn = !1; // used by scroller touch event
 var app = new PIXI.Application({});
@@ -129,7 +132,6 @@ var storyLength = 3000;
 
 // scroller
 var scrollObj = new Scroller(scrollCbk, { zooming: !1, animating: !0, bouncing: !1, animationDuration: 1000 });
-// scrollObj.options.scrollingY = !0;
 
 // TODO
 initPIXI();
@@ -137,4 +139,25 @@ initPIXI();
 
 // ========== WRAP UP ==========
 window.addEventListener('resize', fitScreen, true);
+// SHARE
+var shareData = {};
+shareData['title']=document.getElementById('sharewxtitle').innerHTML;
+shareData['desc']=document.getElementById('sharewxtext').innerHTML;
+shareData['img_url']=document.getElementById('sharewxphotourl').innerHTML;
+shareData['link']=document.getElementById('sharewxurl').innerHTML;
+
+// wexin
+document.addEventListener('WeixinJSBridgeReady', function () {
+    window.WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+            return window.WeixinJSBridge.invoke('sendAppMessage', shareData, function(res) {});
+    }, false);
+    window.WeixinJSBridge.on('menu:share:timeline', function(argv) {
+            return window.WeixinJSBridge.invoke('shareTimeline', shareData, function(res) {});
+    }, false);
+}, false);
+
+// link:http://an.city/ddh/assets/images/shareImg.png
+
+// ANALYSIS
+
 }();
