@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: #000;
+    background-color: #eee;
 }
 
 .hidden {
@@ -25,6 +25,7 @@ canvas {
 }
 
 #content {
+    background-color: #000;
     width: 100%;
     height:100%;
 }
@@ -53,7 +54,7 @@ canvas {
     animation: loading .75s steps(1) infinite
 }
 
-#percent, #tips {
+#loading_percent, #loading_tips {
     margin:6px;
     color: #aaa;
     font-size: 1.5em;
