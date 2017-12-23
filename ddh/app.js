@@ -1,4 +1,4 @@
-!function gamerun() {
+!function gameRun() {
 // =========== vanilla JS helper
 function fadeOut(el){
   el.style.opacity = 1;
@@ -11,11 +11,21 @@ function fadeOut(el){
   })();
 }
 
-// =========== loading TextureCache while loading
-// function i() { C.add(imgInfo + "start/hand.png").add(imgInfo + "start/text.png").add(imgInfo + "transition/tree_1.png").add(imgInfo + "transition/transition23.png").add(imgInfo + "transition/transition34.png").add(imgInfo + "transition/transition45.png").add(imgInfo + "transition/transition45_2.png").add(imgInfo + "transition/tunnel.png").add(imgInfo + "transition/m0.png").add(imgInfo + "logo.png").add(imgInfo + "text/close.png").add(imgInfo + "text/t1_1.png").add(imgInfo + "text/t1_2.png").add(imgInfo + "text/t1_3.png").add(imgInfo + "text/t2_1.png").add(imgInfo + "text/t2_2.png").add(imgInfo + "text/t2_3.png").add(imgInfo + "text/t3.png").add(imgInfo + "text/t4_1.png").add(imgInfo + "text/t4_2.png").add(imgInfo + "text/t4_3.png").add(imgInfo + "text/t5_1.png").add(imgInfo + "text/t5_2.png").add(imgInfo + "text/t6_1.png").add(imgInfo + "text/t6_2.png").add(imgInfo + "text/t7_1.png").add(imgInfo + "text/t7_2.png").add(imgInfo + "text/t8_1.png").add(imgInfo + "text/tt8_2.png").add(imgInfo + "text/pp1.png").add(imgInfo + "text/pp3_1.png").add(imgInfo + "text/pp3_2.png").add(imgInfo + "text/pp4_1.png").add(imgInfo + "text/pp4_2.png").add(imgInfo + "text/pp5.png").add(imgInfo + "text/pp6.png").add(imgInfo + "text/pp7_1.png").add(imgInfo + "text/pp7_2.png").add(imgInfo + "1/bg.jpg").add(imgInfo + "1/door.png").add(imgInfo + "1/1.png").add(imgInfo + "1/2-1.png").add(imgInfo + "1/2-2.png").add(imgInfo + "1/3.png").add(imgInfo + "1/4.png").add(imgInfo + "1/5.png").add(imgInfo + "1/6.png").add(imgInfo + "2/bg.png").add(imgInfo + "2/star.png").add(imgInfo + "2/car1.png").add(imgInfo + "2/car2.png").add(imgInfo + "2/cow1.png").add(imgInfo + "2/cow2.png").add(imgInfo + "2/m0.png").add(imgInfo + "2/m1.png").add(imgInfo + "2/m2.png").add(imgInfo + "2/cover.png").add(imgInfo + "3/bg.jpg").add(imgInfo + "3/cloud.png").add(imgInfo + "3/m3.png").add(imgInfo + "3/m2.png").add(imgInfo + "3/m1.png").add(imgInfo + "3/ground.png").add(imgInfo + "3/tunnel.png").add(imgInfo + "3/tunnel2.png").add(imgInfo + "3/cows.png").add(imgInfo + "4/bg.jpg").add(imgInfo + "4/animal1.png").add(imgInfo + "4/animal2.png").add(imgInfo + "4/animal3.png").add(imgInfo + "4/animal4.png").add(imgInfo + "4/animal5.png").add(imgInfo + "4/cloud4.png").add(imgInfo + "4/cover.png").add(imgInfo + "4/guidao.png").add(imgInfo + "4/mm.png").add(imgInfo + "4/sun.png").add(imgInfo + "4/train.png").add(imgInfo + "5/bg.png").add(imgInfo + "5/cloud.png").add(imgInfo + "5/ground.png").add(imgInfo + "5/m2.png").add(imgInfo + "5/m3.png").add(imgInfo + "5/mm.png").add(imgInfo + "5/sitcow.png").add(imgInfo + "5/animal1.png").add(imgInfo + "5/cow2.png").add(imgInfo + "6/bg.png").add(imgInfo + "6/cloud.png").add(imgInfo + "6/mm.png").add(imgInfo + "6/lake.png").add(imgInfo + "6/cloud2.png").add(imgInfo + "6/mm2.png").add(imgInfo + "6/animal1.png").add(imgInfo + "6/animal2.png").add(imgInfo + "6/animal3.png").add(imgInfo + "6/glass.png").add(imgInfo + "6/house.png").add(imgInfo + "7/bg.png").add(imgInfo + "7/cloud.png").add(imgInfo + "7/m1.png").add(imgInfo + "7/m2.png").add(imgInfo + "7/m3.png").add(imgInfo + "7/m4.png").add(imgInfo + "7/ground.png").add(imgInfo + "8/bg78.png").add(imgInfo + "8/bg.png").add(imgInfo + "8/star.png").add(imgInfo + "8/mm.png").add(imgInfo + "8/ground.png").add(imgInfo + "8/building.png").add(imgInfo + "8/people.png").add(imgInfo + "8/train.png").add(imgInfo + "end/end.png").add(imgInfo + "end/share.png").add(imgInfo + "end/reset.png").add(imgInfo + "common-share-tip.png").on("progress", I).load(e) }
-function progress(n, a) {
-	var t = parseInt(n.progress);
-    document.getElementById('loading_percent').innerHTML(t + "%")
+// =========== loading resources - TODO design data structures
+function gameLoad() {
+	// you can add an array of assets like ['./1.png', './2.png']
+
+	// calc LENGTH here!!!
+	loader.add(imgInfo+'1/bg.jpg');//TEMP using for loop to each scene!!
+	loader.add(imgInfo+'ruler.png');
+	loader.add(imgInfo + 'start/hand.png').add(imgInfo + 'start/text.png');
+	// loader.add('http://google.com/pause.png'); // for pausing
+	loader.on("progress", onProgress).load(initPIXI);
+}
+
+function onProgress(loader, res) {
+	var t = parseInt(loader.progress);
+    document.getElementById('loading_percent').innerHTML= t + "%";
 }
 
 // =========== init base for stage
@@ -23,25 +33,91 @@ function initPIXI(){
 	app.renderer.resize(sWidth, sHeight);
 	app.renderer.backgroundColor = 0x000000;
 	document.getElementById('content').appendChild(app.view);
-	setTimeout(function(){fadeOut(document.getElementById('intro-container'))}, 300);
+	document.getElementById('loading_percent').innerHTML= "100%";
+	setTimeout(function(){fadeOut(document.getElementById('intro-container'))}, 1000);
 
-	app.stage.addChild(base);
+
 	base.addChild(roll);
 	// interactive root
 	base.interactive = !0;
 	base.buttonMode = !0;
 	base.on("touchstart", onTouchstart).on("touchmove", onTouchmove).on("touchend", onTouchend);
-	base.on("mousedown", onMousedown).on("mousemove", onMousemove).on("mouseup", onMouseup);
+	base.on("mousedown", onMousedown).on("mousemove", onMousemove).on("mouseup", onMouseup).on("mouseout", onMouseout);
 
 	// ***** TEMP adding content
-	var bgTex = PIXI.Texture.fromImage('./assets/images/1/bg.jpg');
-	var bg = new PIXI.Sprite(bgTex);
+	var bg = new PIXI.Sprite(loader.resources[imgInfo + '1/bg.jpg'].texture);
 	bg.position.set(0,0);
 	roll.addChild(bg);
 
+	// ruler
+	var rulerTile = new PIXI.extras.TilingSprite(loader.resources[imgInfo + 'ruler.png'].texture, 30000, 750);
+	rulerTile.alpha = 0.3;
+	roll.addChild(rulerTile);
+
+	gameStart();
+	roll.addChild(scnStart);// added lastly to stay on top
+
 	fitScreen();
+	app.stage.addChild(base);
+	teenimate();
 }
 
+function gameStart() {
+	scnStart = new PIXI.Container();
+	var scnStart_hand = new PIXI.Sprite(loader.resources[imgInfo + "start/hand.png"].texture);
+    scnStart_hand.position.set(700 - 30 + 100, 483);
+    scnStart_hand_tween = new TWEEN.Tween(scnStart_hand.position)
+    	.to({ x: 700 - 30 - 100 }, 1e3).delay(300).repeat(1 / 0).easing(TWEEN.Easing.Quadratic.Out).start();
+
+    var scnStart_text = new PIXI.Sprite(loader.resources[imgInfo + "start/text.png"].texture);
+    scnStart_text.position.set(700 - 133/2, 610);
+    // cover
+    var scnStart_cover = new PIXI.Graphics();
+    scnStart_cover.beginFill(0, 0.4);
+    scnStart_cover.drawRect(0, 0, 2e3, 750);
+    scnStart_cover.endFill();
+    scnStart.addChild(scnStart_hand, scnStart_text, scnStart_cover);
+}
+
+// =========== tween - DONE
+function teenimate(time) {
+	requestAnimationFrame(teenimate);
+	TWEEN.update(time);
+}
+
+// =========== auto orientation - DONE
+function fitScreen() {
+	// var w = window.innerWidth, h = window.innerHeight;
+	sWidth = mobile?window.innerWidth:document.getElementById('content').clientWidth;
+ 	sHeight = mobile?window.innerHeight:document.getElementById('content').clientHeight;
+	app.renderer.resize(sWidth, sHeight);
+
+	var v = scrollObj.getValues();
+	var left = v.left, top = v.top;
+	var s = sWidth < sHeight ? (sWidth / 750) : (sHeight / 750);
+	if (s==0) {return;}
+
+	if (sWidth < sHeight) {// portrait
+		setTimeout(function(){
+			base.rotation = Math.PI / 2;
+			base.scale.set(s, s)
+			base.x = sWidth;
+			storyLength = storyLength0 + sHeight - sHeight/s;
+			scrollObj.setDimensions(sWidth, sHeight, sWidth, storyLength);
+			scrollObj.scrollTo(0, left, !1);
+		}, 0);
+
+	} else {// landscape
+		setTimeout(function(){
+			base.rotation = 0;
+			base.scale.set(s, s)
+			base.x = 0;
+			storyLength = storyLength0 + sWidth - sWidth/s;
+			scrollObj.setDimensions(sWidth, sHeight, storyLength, sHeight);
+			scrollObj.scrollTo(top, 0, !1);
+		}, 0);
+	}
+}
 
 // =========== scroller
 function scrollCbk(left, top, zoom) {
@@ -55,6 +131,11 @@ function scrollCbk(left, top, zoom) {
 	}
 
 	// animation HERE!
+	if (l == 0) {scnStart.alpha = 1}
+
+	if (l > 0 && l <= 1750) {
+		scnStart.alpha = 0;
+	}
 
 	roll.position.x = -l;
 	roll.position.y = -h;
@@ -68,7 +149,6 @@ function onTouchstart(e) {
     } else {
     	scrollObj.doTouchStart([a], a.timeStamp);
     }
-// add a helper to show the XY coord
 }
 function onTouchmove(e) {
 	if (touchOn) {
@@ -90,7 +170,7 @@ function onMousedown(e) {
 	var a = e.data.originalEvent;
     touchOn = !0;
     scrollObj.doTouchStart([a], a.timeStamp);
-// add a helper to show the XY coord
+    // console.log(a.offsetX+", "+a.offsetY)
 }
 function onMousemove(e) {
 	if (touchOn) {
@@ -98,40 +178,17 @@ function onMousemove(e) {
 	    scrollObj.doTouchMove([a], a.timeStamp);
     }
 }
+function onMouseout(e) {
+	if (touchOn) {
+		var a = e.data.originalEvent;
+	    scrollObj.doTouchEnd(a.timeStamp);
+	    touchOn = !1;
+    }
+}
 function onMouseup(e) {
 	var a = e.data.originalEvent;
     scrollObj.doTouchEnd(a.timeStamp);
     touchOn = !1;
-}
-
-
-// =========== auto orientation - DONE
-function fitScreen() {
-	// var w = window.innerWidth, h = window.innerHeight;
-	sWidth = mobile?window.innerWidth:document.getElementById('content').clientWidth;
- 	sHeight = mobile?window.innerHeight:document.getElementById('content').clientHeight;
-	var v = scrollObj.getValues();
-	var left = v.left, top = v.top;
-	var s = sWidth < sHeight ? (sWidth / 750) : (sHeight / 750);
-	app.renderer.resize(sWidth, sHeight);
-	if (sWidth < sHeight) {// portrait
-		setTimeout(function(){
-			base.rotation = Math.PI / 2;
-			base.scale.set(s, s)
-			base.x = sWidth;
-			scrollObj.setDimensions(sWidth, sHeight, sWidth, storyLength);
-			scrollObj.scrollTo(0, left, !1);
-		}, 0);
-
-	} else {// landscape
-		setTimeout(function(){
-			base.rotation = 0;
-			base.scale.set(s, s)
-			base.x = 0;
-			scrollObj.setDimensions(sWidth, sHeight, storyLength, sHeight);
-			scrollObj.scrollTo(top, 0, !1);
-		}, 0);
-	}
 }
 
 // =========== MAIN ============
@@ -142,7 +199,7 @@ if (!/iphone|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|le
 	var mobile = !1;
 	document.getElementById('loading_tips').innerHTML = '努力读取中，请稍后...';
 	document.getElementById('content')
-		.setAttribute("style", "position: absolute; height: 400px; width: 760px; top: 50%; left: 50%; margin-top: -200px; margin-left: -380px; background-color: #000;");
+		.setAttribute("style", "position: absolute; height: 400px; width: 760px; top: 50%; left: 50%; margin-top: -200px; margin-left: -380px;");
 	// document.getElementById('content').setAttribute("style", "height: 100vh; width: 100vw; background: #eee url(./assets/images/loading/desktop.png) no-repeat center 100px; background-size: 639px 396px;");
 }
 // load music before PIXI
@@ -153,15 +210,19 @@ var touchOn = !1; // used by scroller touch event
 var app = new PIXI.Application({});
 var base = new PIXI.Container(); //container for rotation
 var roll = new PIXI.Container(); //container for scroll
+var loader = PIXI.loader;
+
 var sWidth = mobile?window.innerWidth:document.getElementById('content').clientWidth;
 var sHeight = mobile?window.innerHeight:document.getElementById('content').clientHeight;
+var storyLength, storyLength0 = 3000;
 
-var storyLength = 3000;
+// scene containers
+var scnStart;
+
 // scroller
 var scrollObj = new Scroller(scrollCbk, { zooming: !1, animating: !0, bouncing: !1, animationDuration: 1000 });
-
-// TODO
-initPIXI();
+// start
+gameLoad();
 
 // ========== WRAP UP ==========
 window.addEventListener('resize', fitScreen, true);
