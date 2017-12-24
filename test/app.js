@@ -127,7 +127,10 @@ function gameShare() {
 	    fadeIn(el);
 	    setTimeout(function() { fadeOut(el) }, 2e3);
     }
-    function onReload(){ location.reload() }
+    function onReload(){
+    	// location.reload();
+    	scrollObj.scrollTo(0, 0, !1);
+    }
     share.on('tap', onShare).on('click', onShare);
 	reload.on('tap', onReload).on('click', onReload);
 }
